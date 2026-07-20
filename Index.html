@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoreline Hotel | Boutique Gold Coast Stays</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --accent: #005f73;
+      --accent-light: #e0f4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin: 0 0 0.5em;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin: 0 0 0.75em;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin: 0 0 0.5em;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:focus,
+    button:focus,
+    input:focus,
+    textarea:focus {
+      outline: 3px solid #ffb703;
+      outline-offset: 2px;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background-color: var(--accent);
+      color: #ffffff;
+      padding: 0.75em 1.5em;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+
+    header {
+      background-color: var(--bg);
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo a {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      color: var(--text);
+      font-size: 24px;
+      padding: 0.25em;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 1rem 3rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .hero-content {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: var(--accent-light);
+    }
+
+    .hero-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-content {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .rooms-grid,
+    .amenities-grid,
+    .gallery-grid,
+    .testimonials-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .rooms-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .amenities-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .testimonials-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .room-card,
+    .amenity-card,
+    .testimonial-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 1.25rem;
+      background-color: #ffffff;
+    }
+
+    .amenity-icon {
+      font-size: 28px;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 0.5rem;
+    }
+
+    .guest-name {
+      font-weight: 600;
+      margin-top: 0.75rem;
+    }
+
+    .star-rating {
+      margin-top: 0.25rem;
+      color: #ffb703;
+    }
+
+    .contact-layout {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    form {
+      flex: 1 1 280px;
+    }
+
+    form div {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #c0c0c0;
+      font-size: 16px;
+    }
+
+    .map-placeholder {
+      flex: 1 1 280px;
+      min-height: 240px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      border: 1px dashed #c0c0c0;
+    }
+
+    footer {
+      background-color: #f5f5f5;
+      color: #333333;
+      padding: 2rem 1rem;
+    }
+
+    .footer-top {
+      max-width: 1120px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .footer-logo a {
+      font-weight: 700;
+      font-size: 18px;
+      color: #333333;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links nav h3 {
+      margin-bottom: 0.5rem;
+      font-size: 16px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-links a {
+      color: #333333;
+      font-size: 14px;
+    }
+
+    .footer-social ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      color: #333333;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 0 auto;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* Tablet and below */
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        background-color: var(--bg);
+        border-top: 1px solid #e0e0e0;
+        padding: 0.75rem 1rem;
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      .nav-links.open {
+        max-height: 240px;
+      }
+
+      .nav-toggle {
+        display: inline-block;
+      }
+
+      .rooms-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .rooms-grid,
+      .amenities-grid,
+      .gallery-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .hero-content {
+        padding: 2.5rem 1rem;
+      }
+
+      .contact-layout {
+        flex-direction: column;
+      }
+
+      footer {
+        padding: 1.5rem 1rem;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary">
+      <div class="logo">
+        <a href="#hero">Shoreline Hotel</a>
+      </div>
+      <button
+        class="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+      <ul class="nav-links">
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">Your Gold Coast Escape Awaits</h1>
+        <p>Boutique coastal stays, steps from the beach</p>
+        <button type="button">Book Now</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">Welcome to Shoreline</h2>
+      <div class="about-content">
+        <figure>
+          <img src="images/about-hotel.jpg" alt="Exterior view of Shoreline Hotel near the beach">
+        </figure>
+        <p>
+          Shoreline Hotel is a boutique coastal retreat on the Gold Coast, offering intimate stays,
+          personalised service, and effortless access to the ocean.
+        </p>
+      </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" aria-labelledby="rooms-heading">
+      <h2 id="rooms-heading">Our Rooms</h2>
+      <div class="rooms-grid">
+        <article class="room-card">
+          <figure>
+            <img src="images/room-standard.jpg" alt="Standard room with queen bed and ocean-inspired decor">
+          </figure>
+          <h3>Standard Coastal Room</h3>
+          <p>Bright, comfortable rooms with coastal touches and all the essentials for a relaxing stay.</p>
+          <p class="price">From $180/night</p>
+        </article>
+
+        <article class="room-card">
+          <figure>
+            <img src="images/room-oceanview.jpg" alt="Ocean view suite with balcony overlooking the beach">
+          </figure>
+          <h3>Ocean View Suite</h3>
+          <p>Spacious suites with private balconies and sweeping views of the Gold Coast shoreline.</p>
+          <p class="price">From $260/night</p>
+        </article>
+
+        <article class="room-card">
+          <figure>
+            <img src="images/room-family.jpg" alt="Family room with multiple beds and lounge area">
+          </figure>
+          <h3>Family Retreat</h3>
+          <p>Thoughtfully designed rooms for families, with extra space and flexible bedding options.</p>
+          <p class="price">From $320/night</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" aria-labelledby="amenities-heading">
+      <h2 id="amenities-heading">Amenities</h2>
+      <div class="amenities-grid">
+        <article class="amenity-card">
+          <div class="amenity-icon" aria-hidden="true">🏊</div>
+          <h3>Rooftop Pool</h3>
+          <p>Unwind in our heated rooftop pool with panoramic coastal views.</p>
+        </article>
+
+        <article class="amenity-card">
+          <div class="amenity-icon" aria-hidden="true">☕</div>
+          <h3>Café &amp; Bar</h3>
+          <p>Enjoy specialty coffee, crafted cocktails, and seasonal small plates.</p>
+        </article>
+
+        <article class="amenity-card">
+          <div class="amenity-icon" aria-hidden="true">🧘</div>
+          <h3>Wellness Studio</h3>
+          <p>Yoga, pilates, and wellness experiences designed for coastal calm.</p>
+        </article>
+
+        <article class="amenity-card">
+          <div class="amenity-icon" aria-hidden="true">📶</div>
+          <h3>High-Speed Wi-Fi</h3>
+          <p>Stay connected with complimentary high-speed internet throughout the hotel.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading">Gallery</h2>
+      <div class="gallery-grid">
+        <figure>
+          <img src="images/gallery-1.jpg" alt="Sunset over the Gold Coast beach near Shoreline Hotel">
+        </figure>
+        <figure>
+          <img src="images/gallery-2.jpg" alt="Lobby interior with modern coastal design">
+        </figure>
+        <figure>
+          <img src="images/gallery-3.jpg" alt="Guest room with ocean-inspired decor">
+        </figure>
+        <figure>
+          <img src="images/gallery-4.jpg" alt="Rooftop pool area with loungers and ocean views">
+        </figure>
+        <figure>
+          <img src="images/gallery-5.jpg" alt="Hotel café serving coffee and pastries">
+        </figure>
+        <figure>
+          <img src="images/gallery-6.jpg" alt="Night view of Shoreline Hotel exterior lighting">
+        </figure>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">What Our Guests Say</h2>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <blockquote>
+            “The perfect coastal escape—beautiful rooms, friendly staff, and unbeatable location.”
+          </blockquote>
+          <p class="guest-name">— Emily R.</p>
+          <p class="star-rating" aria-label="5 out of 5 stars">★★★★★</p>
+        </article>
+
+        <article class="testimonial-card">
+          <blockquote>
+            “Loved the rooftop pool and the relaxed boutique vibe. We’ll definitely be back.”
+          </blockquote>
+          <p class="guest-name">— Daniel K.</p>
+          <p class="star-rating" aria-label="4 out of 5 stars">★★★★☆</p>
+        </article>
+
+        <article class="testimonial-card">
+          <blockquote>
+            “Thoughtful details everywhere, from the décor to the service. Felt truly looked after.”
+          </blockquote>
+          <p class="guest-name">— Sophia L.</p>
+          <p class="star-rating" aria-label="5 out of 5 stars">★★★★★</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Get in Touch</h2>
+      <div class="contact-layout">
+        <form action="#" method="post">
+          <div>
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" required>
+          </div>
+          <div>
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" required>
+          </div>
+          <div>
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+
+        <section aria-label="Map location">
+          <div class="map-placeholder"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <a href="#hero">Shoreline Hotel</a>
+      </div>
+      <div class="footer-links">
+        <nav aria-label="Explore">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Support">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Customer Care</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-social">
+        <ul aria-label="Social media">
+          <li><a href="#" aria-label="Visit Shoreline Hotel on Facebook">Facebook</a></li>
+          <li><a href="#" aria-label="Visit Shoreline Hotel on Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="Visit Shoreline Hotel on Twitter">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; Shoreline Hotel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    function toggleMenu() {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    navToggle.addEventListener('click', toggleMenu);
+
+    navToggle.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleMenu();
+      }
+    });
+  </script>
+</body>
+</html>
